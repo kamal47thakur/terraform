@@ -1,6 +1,6 @@
 variable "aws_region" {
   type    = string
-  default = "ap-south-1" # Replace with your desired AWS region
+  default = "us-east-1" # Replace with your desired AWS region
 }
 
 variable "ami_id" {
