@@ -39,15 +39,13 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: |
-         
-          terraform plan -out=tfplan -input=false
-        continue-on-error: true
+          terraform plan -out=tfplan
+          echo "::set-output name=exitcode::$?"
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && steps.plan.outputs.exitcode == 2
         run: |
-         
-          terraform apply -auto-approve tfplan
+         terraform apply -auto-approve tfplan
 
       - name: Upload Terraform Plan Artifact
         if: steps.plan.outputs.exitcode == 2
