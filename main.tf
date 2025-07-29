@@ -1,20 +1,11 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
 provider "aws" {
   region = "ap-south-1" # Specify your desired AWS region
 }
 
-resource "aws_instance" "example" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
+resource "aws_instance" "my_ec2_instance" {
+  ami           = "ami-0abcdef1234567890" # Replace with a valid AMI ID for your region
+  instance_type = "t3.micro"             # Choose your desired instance type
   tags = {
-    Name = "example-instance"
+    Name = "MyFirstTerraformEC2"
   }
 }
