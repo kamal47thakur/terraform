@@ -45,7 +45,7 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && steps.plan.outputs.exitcode == 2
         run: |
-         terraform apply -auto-approve tfplan
+         terraform apply -auto-approve "tfplan"
 
       - name: Upload Terraform Plan Artifact
         if: steps.plan.outputs.exitcode == 2
